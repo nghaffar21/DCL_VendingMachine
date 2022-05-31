@@ -1,0 +1,16 @@
+import { Initialise } from "./initial";
+
+const _scene = new Entity('_scene')
+const transform = new Transform({
+    position: new Vector3(0, 0, 8),
+    rotation:  Quaternion.Euler(0, 0, 0),
+    scale: new Vector3(1, 1, 0.9)
+  })
+  _scene.addComponent(transform)
+  //_scene.addComponent(new GLTFShape("models/items/item0.glb"))
+engine.addEntity(_scene);
+
+Initialise(_scene);
+
+
+

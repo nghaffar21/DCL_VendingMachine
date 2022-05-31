@@ -1,0 +1,61 @@
+{
+  "display": {
+    "title": "Meta Mall",
+    "favicon": "favicon_asset",
+    "description": "Buy and sell your NFTs",
+    "navmapThumbnail": "scene-thumbnail.png"
+  },
+  "owner": "",
+  "contact": {
+    "name": "Meta Mall",
+    "email": ""
+  },
+  "main": "bin/game.js",
+  "tags": [],
+  "scene": {
+    "parcels": [
+      "-24,15",
+      "-25,15"
+    ],
+    "base": "-24,15"
+  },
+  "communications": {
+    "type": "webrtc",
+    "signalling": "https://signalling-01.decentraland.org"
+  },
+  "policy": {
+    "contentRating": "E",
+    "fly": true,
+    "voiceEnabled": true,
+    "blacklist": [],
+    "teleportPosition": ""
+  },
+  "requiredPermissions": [
+    "ALLOW_TO_MOVE_PLAYER_INSIDE_SCENE"
+  ],
+  "spawnPoints": [
+    {
+      "name": "spawn1",
+      "default": true,
+      "position": {
+        "x": 20,
+        "y": 1,
+        "z": 20
+      }
+    }
+  ],
+  "source": {
+    "version": 1,
+    "origin": "builder",
+    "projectId": "8d490be6-cf83-41b5-84ee-b5991edf3ea1",
+    "point": {
+      "x": 0,
+      "y": 0
+    },
+    "rotation": "east",
+    "layout": {
+      "rows": 2,
+      "cols": 9
+    }
+  }
+}
