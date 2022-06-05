@@ -1,18 +1,25 @@
 const item=new Entity("item");
 item.addComponent(new Animator());
+
+
+const items=[{name:"car1",price:10},{name:"car2",price:10},{name:"track",price:20},{name:"bus",price:30}]
 export function Item(machine,i)
 {
     //if(curentitem!=null)
-
-    item.addComponentOrReplace(new GLTFShape("models/items/item"+i+".glb"));
-    item.setParent(machine);
+    //log(machine.ui)
+    if(i!=null)
+    machine.ui.ItemInfo(items[i])
+    else
+    i=0
+    item.addComponentOrReplace(new GLTFShape("models/items/item"+(i+1)+".glb"));
+    item.setParent(machine.game);
     try {
         const transform = new Transform({
-            position: new Vector3(0, 0.5, 0),
+            position: new Vector3(-0.3, 1.7, 0),
             rotation:  Quaternion.Euler(0, 0, 0),
-            scale: new Vector3(1, 1, 1)
+            scale: new Vector3(0.2, 0.2, 0.2)
           })
-          machine.addComponent(transform)
+          item.addComponent(transform)
         
     } catch (error) {
         
@@ -30,3 +37,4 @@ export function Item(machine,i)
         })
       )
 }
+
