@@ -1,4 +1,4 @@
-extra
-backup
-models/old
-models/bnight
+package.json
+package-lock.json
+node_modules
+bin

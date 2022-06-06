@@ -14,6 +14,9 @@ export function UIinfo()
     text.positionY=80
     this.ItemInfo=function(item)
     { 
+        if(item==null)
+        text.value="welcom Nima \n Select a werable ";
+        else
         text.value = "name:"+item.name+"\nprice: "+item.price+"\npull handle to buy and pick up"
     }
     this.show=function()
