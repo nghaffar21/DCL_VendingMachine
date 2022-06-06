@@ -54,11 +54,11 @@ export function Machine(building)
     
 
  
-    new Item(this,null);
+    /*new Item(this,null);
     new Item(this,0);
     new Item(this,1);
     new Item(this,2);
-    new Item(this,3);
+    new Item(this,3);*/
     new Item(this,null);
     change(this,1);
     change(this,-1);
