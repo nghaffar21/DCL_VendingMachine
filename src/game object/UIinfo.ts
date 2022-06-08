@@ -1,7 +1,9 @@
 import * as ui from '@dcl/ui-scene-utils'
 //const canvas = new UICanvas()
+//canvas.hAlign='let'
+//canvas.width=10; 
 //const text = new UIText(canvas)
-let prompt
+let prompt:ui.OkPrompt
 
 export function UIinfo()
 {
@@ -25,10 +27,12 @@ export function UIinfo()
         //text.value = "name:"+item.name+"\nprice: "+item.price+"\npull handle to buy and pick up"
         this.show()}
     } 
-    this.show=function()
+    this.show=function(height=0)
     {
         //canvas.visible=true;
-        prompt=new ui.OkPrompt(
+        if(prompt!=null) 
+        prompt.close()
+       prompt=new ui.OkPrompt(
             this.text,
             () => {
               log(`accepted`)
@@ -36,6 +40,21 @@ export function UIinfo()
             'Ok',
             true
           )
+          //prompt.canvas=canvas;
+        //prompt = new ui.CustomPrompt(ui.PromptStyles.DARKLARGE,500,100)
+        //prompt.addText(this.text)
+        if(height!=0)
+        {
+            prompt.background.height=height
+            prompt.button.vAlign="bottom"
+            prompt.button.positionY=10
+            prompt.text.vAlign="top" 
+            prompt.text.positionY=-150
+            prompt.closeIcon.vAlign="top" 
+            prompt.closeIcon.positionY=-20
+            //prompt.closeIcon.hAlign="right" 
+        }
+        prompt.background.vAlign="bottom"
     }
     this.hide=function()
     {
@@ -46,6 +65,6 @@ export function UIinfo()
     { 
         //text.value = "go to someone with a halo and discuss the first \n NFT you ever collected , ask them about theirs. You have 10min. \nCome back to machine when Finished"
         this.text = "go to someone with a halo and discuss the first \n NFT you ever collected , ask them about theirs. You have 10min. \nCome back to machine when Finished"
-        this.show()
+        this.show(350)
     }
 }

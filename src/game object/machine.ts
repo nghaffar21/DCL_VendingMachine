@@ -5,7 +5,7 @@ import * as utils from '@dcl/ecs-scene-utils'
 const invisible=new Material()
 invisible.albedoColor=new Color4(0,0,0,0)
 let curentindex=0;
-
+let staticItem;
 
 
 
@@ -26,7 +26,7 @@ export function Machine(building)
 
 
 
-
+    
     this.game=machine;
     machine.addComponent(new GLTFShape("models/machine.glb"))
     machine.setParent(building)
@@ -59,7 +59,7 @@ export function Machine(building)
     new Item(this,1);
     new Item(this,2);
     new Item(this,3);*/
-    new Item(this,null);
+    staticItem=new Item(this,null);
     change(this,1);
     change(this,-1);
     buy(this);
@@ -103,7 +103,8 @@ function buy(machine)
         new OnPointerDown((e) => {
             const clipSwim = new AnimationState("Plane.006Action.002", { layer: 0 })
             handle.play();
-            machine.ui.buy(curentindex)
+            staticItem.buy(curentindex);
+            //machine.ui.buy(curentindex)
         })
       )
     box.setParent(machine.game);

@@ -1,12 +1,23 @@
+import { setTimeout } from "@dcl/ecs-scene-utils";
+
 const item=new Entity("item");
 item.addComponent(new Animator());
 
 
-const items=[{name:"car1",price:10,img:"red"},{name:"car2",price:10,img:"violet"},{name:"truck",price:20,img:"truck"},{name:"bus",price:30,img:"bus"}]
+const items=[{name:"car1",price:10,img:"red",url:"https://market.decentraland.org/contracts/0x2691f0feaa0137af3edb3acaf83ca5d6a3cfdf32/items/0"},
+{name:"car2",price:10,img:"violet",url:"https://market.decentraland.org/contracts/0x2691f0feaa0137af3edb3acaf83ca5d6a3cfdf32/items/0"},
+{name:"truck",price:20,img:"truck",url:"https://market.decentraland.org/contracts/0x2691f0feaa0137af3edb3acaf83ca5d6a3cfdf32/items/0"},
+{name:"bus",price:30,img:"bus",url:"https://market.decentraland.org/contracts/0x2691f0feaa0137af3edb3acaf83ca5d6a3cfdf32/items/0"}]
 export function Item(machine,i)
 {
     //if(curentitem!=null)
     //log(machine.ui)
+    this.buy= function(i)
+    {
+        //setTimeout(2000,() => {
+            openExternalURL(items[i].url)
+         // });
+    }
     if(i!=null)
     machine.ui.ItemInfo(items[i])
     else
@@ -37,10 +48,10 @@ export function Item(machine,i)
         
     }
     item.getComponent(Animator).getClip("Action").play();
-    item.addComponentOrReplace(
+    /*item.addComponentOrReplace(
         new OnPointerDown((e) => {
             openExternalURL("https://docs.decentraland.org")
         })
-      )
+      )*/
 }
 
