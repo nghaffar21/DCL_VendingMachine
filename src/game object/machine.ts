@@ -10,12 +10,18 @@ let staticItem;
 
 
 const machine = new Entity();
+
+
+    machine.addComponent(new GLTFShape("models/machine.glb"))
     machine.addComponent(new Animator());
     machine.getComponent(Animator).getClip("Plane.005Action").play();
     const handle = new AnimationState("Plane.006Action.002", { layer: 1 })
     handle.looping = false
-    machine.getComponent(Animator).addClip(handle)
+
+    const rightglass = new AnimationState("Plane.001Action", { layer: 2 })
+    rightglass.looping = false
     machine.getComponent(Animator).addClip(handle);
+    machine.getComponent(Animator).addClip(rightglass)
 
 const image=new Entity()
 
@@ -26,9 +32,8 @@ export function Machine(building)
 
 
 
-    
+    //this.rightglass=rightglass
     this.game=machine;
-    machine.addComponent(new GLTFShape("models/machine.glb"))
     machine.setParent(building)
     this.ui= new UIinfo();
     //log(this.ui)
@@ -48,17 +53,6 @@ export function Machine(building)
         } 
       )  
     machine.addComponent(truger)
-
-
-
-    
-
- 
-    /*new Item(this,null);
-    new Item(this,0);
-    new Item(this,1);
-    new Item(this,2);
-    new Item(this,3);*/
     staticItem=new Item(this,null);
     change(this,1);
     change(this,-1);
@@ -78,6 +72,7 @@ function change(machine,i)
     box.addComponent(transform)
     box.addComponent(
         new OnPointerDown((e) => {
+            rightglass.speed=1
             curentindex++;
             if(curentindex>3)
                 curentindex=0;
@@ -101,10 +96,17 @@ function buy(machine)
     box.addComponent(transform)
     box.addComponent(
         new OnPointerDown((e) => {
-            const clipSwim = new AnimationState("Plane.006Action.002", { layer: 0 })
-            handle.play();
-            staticItem.buy(curentindex);
-            //machine.ui.buy(curentindex)
+            handle.play();  
+            if(rightglass.speed==1)
+            {rightglass.play();
+            utils.setTimeout(2000,() => {
+                
+                rightglass.speed=0
+                handle.stop()
+                
+            });
+        }
+            machine.ui.buy(curentindex)
         })
       )
     box.setParent(machine.game);

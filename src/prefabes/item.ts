@@ -10,13 +10,10 @@ const items=[{name:"car1",price:10,img:"red",url:"https://market.decentraland.or
 {name:"bus",price:30,img:"bus",url:"https://market.decentraland.org/contracts/0x2691f0feaa0137af3edb3acaf83ca5d6a3cfdf32/items/0"}]
 export function Item(machine,i)
 {
-    //if(curentitem!=null)
-    //log(machine.ui)
+
     this.buy= function(i)
     {
-        //setTimeout(2000,() => {
             openExternalURL(items[i].url)
-         // });
     }
     if(i!=null)
     machine.ui.ItemInfo(items[i])
@@ -48,10 +45,10 @@ export function Item(machine,i)
         
     }
     item.getComponent(Animator).getClip("Action").play();
-    /*item.addComponentOrReplace(
+    item.addComponentOrReplace(
         new OnPointerDown((e) => {
-            openExternalURL("https://docs.decentraland.org")
+            this.buy(i);
         })
-      )*/
+      )
 }
 
