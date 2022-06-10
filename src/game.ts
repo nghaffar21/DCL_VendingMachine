@@ -1,4 +1,11 @@
 import { Initialise } from "./initial";
+// create entity
+
+// give entity a shape and transform
+
+
+// add a repeated function
+
 
 const _scene = new Entity('_scene')
 const transform = new Transform({
@@ -11,6 +18,17 @@ const transform = new Transform({
 engine.addEntity(_scene);
 
 Initialise(_scene);
+
+
+
+
+
+
+
+
+
+
+
 
 
 

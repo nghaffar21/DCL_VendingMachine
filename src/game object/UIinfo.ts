@@ -4,11 +4,11 @@ let prompt:ui.OkPrompt
 export function UIinfo()
 {
    
-    this.text="welcom Nima \n Select a werable ";
+    this.text="Welcom ! \n Select a wearable ";
     this.ItemInfo=function(item)
     { 
         if(item==null)
-        this.text="welcom Nima \n Select a werable ";
+        this.text="Welcom ! \n Select a wearable ";
         else
         {this.text = "name:"+item.name+"\nprice: "+item.price+"\npull handle to buy and pick up"
         this.show()}
@@ -44,10 +44,12 @@ export function UIinfo()
     {
         prompt.close()
     }
-    this.buy=function(item)
+    this.buy=function(item,exist)
     { 
-        if(false)
+        log(exist)
+        if(exist)
         {
+            
             this.text = "go to someone with a halo and discuss the first \n NFT you ever collected , ask them about theirs. You have 10min. \nCome back to machine when Finished"
             this.show(350)
         }

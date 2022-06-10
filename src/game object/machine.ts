@@ -2,6 +2,11 @@
 import { Item } from "src/prefabes/item";
 import { UIinfo } from "./UIinfo";
 import * as utils from '@dcl/ecs-scene-utils'
+import { getUserData } from "@decentraland/Identity"
+import { exit } from "@decentraland/PortableExperiences";
+
+
+
 const invisible=new Material()
 invisible.albedoColor=new Color4(0,0,0,0)
 let curentindex=0;
@@ -29,8 +34,8 @@ const image=new Entity()
 export function Machine(building)
 {
     
-
-
+    this.exist=false;
+    checkwerable()
 
     //this.rightglass=rightglass
     this.game=machine;
@@ -106,7 +111,7 @@ function buy(machine)
                 
             });
         }
-            machine.ui.buy(curentindex)
+            machine.ui.buy(curentindex,machine.exist)
         })
       )
     box.setParent(machine.game);
@@ -124,4 +129,13 @@ function changeImage(item)
     image.addComponentOrReplace(new Material());
     image.getComponent(Material).albedoTexture=new Texture("images/"+item+".jpeg")
     image.setParent(machine); 
+}
+
+function checkwerable()
+{
+    /*executeTask(async () => {
+        let data0 = await getUserData()
+        log(data0)
+      })*/
+      //getUserData().then((data)=>{})
 }
