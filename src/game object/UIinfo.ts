@@ -1,6 +1,9 @@
 import * as ui from '@dcl/ui-scene-utils'
 let prompt:ui.OkPrompt
-
+const messages=["go to someone with a halo and discuss the first \n NFT you ever collected , ask them about theirs. You have 10min. \nCome back to machine when Finished",
+"you met 1 people , you got 10 halo points . Select another werable or pull bar to get a different task",
+"look for the person who gave the most beautifull werable in the space and ask them to tell you it's story ",
+"look for the person who gave the most beautifull werable in the space and ask them to tell you it's story "]
 export function UIinfo()
 {
    
@@ -50,7 +53,7 @@ export function UIinfo()
         if(exist)
         {
             
-            this.text = "go to someone with a halo and discuss the first \n NFT you ever collected , ask them about theirs. You have 10min. \nCome back to machine when Finished"
+            this.text = messages[Math.floor(Math.random()*(messages.length-1))]
             this.show(350)
         }
         else
