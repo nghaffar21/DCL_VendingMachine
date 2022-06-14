@@ -1,5 +1,6 @@
 import * as ui from '@dcl/ui-scene-utils'
 let prompt:ui.OkPrompt
+let messageOrder=0;
 const messages=["go to someone with a halo and discuss the first \n NFT you ever collected , ask them about theirs. You have 10min. \nCome back to machine when Finished",
 "you met 1 people , you got 10 halo points . Select another werable or pull bar to get a different task",
 "look for the person who gave the most beautifull werable in the space and ask them to tell you it's story ",
@@ -7,11 +8,11 @@ const messages=["go to someone with a halo and discuss the first \n NFT you ever
 export function UIinfo()
 {
    
-    this.text="Welcom ! \n Select a wearable ";
+    this.text="Welcome ! \n Select a wearable ";
     this.ItemInfo=function(item)
     { 
         if(item==null)
-        this.text="Welcom ! \n Select a wearable ";
+        this.text="Welcome ! \n Select a wearable ";
         else
         {this.text = "name:"+item.name+"\nprice: "+item.price+"\npull handle to buy and pick up"
         this.show()}
@@ -52,8 +53,11 @@ export function UIinfo()
         log(exist)
         if(exist)
         {
-            
-            this.text = messages[Math.floor(Math.random()*(messages.length-1))]
+            let i=messageOrder;
+            if(i>=messages.length-1)
+            i=Math.floor(Math.random()*(messages.length-1))
+            this.text = messages[i];
+            messageOrder++
             this.show(350)
         }
         else
